@@ -48,3 +48,6 @@ http://dokelung-blog.logdown.com/posts/221431-django-notes-8-form-validation-and
 
 安裝Session App
 http://dokelung-blog.logdown.com/posts/222552-django-notes-9-cookies-and-sessions
+
+由上表可知，對AnonymousUser來說，
+http://dokelung-blog.logdown.com/posts/234437-django-notes-10-users-login-and-logout
