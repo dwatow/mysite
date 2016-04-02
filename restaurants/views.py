@@ -46,6 +46,5 @@ def comment(request,id):
             f = CommentForm()
     else:
         f = CommentForm()
-        return HttpResponse("run this")
 
     return render_to_response('comments.html',locals())

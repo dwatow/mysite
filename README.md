@@ -41,6 +41,11 @@ https://docs.djangoproject.com/en/1.9/intro/tutorial01/
 Visit http://docs.c9.io for support, or to learn more about using Cloud9 IDE.
 To watch some training videos, visit http://www.youtube.com/user/c9ide
 
+
+
+Admin介面
+http://dokelung-blog.logdown.com/posts/220832-django-notes-6-manage-your-system-admin
+
 Django筆記(8) - 表單的驗證與模型化
 我們分析一下代碼，當表單確定被提交後
 http://dokelung-blog.logdown.com/posts/221431-django-notes-8-form-validation-and-modeling
@@ -49,5 +54,5 @@ http://dokelung-blog.logdown.com/posts/221431-django-notes-8-form-validation-and
 安裝Session App
 http://dokelung-blog.logdown.com/posts/222552-django-notes-9-cookies-and-sessions
 
-由上表可知，對AnonymousUser來說，
+使用內建的login/logout視圖
 http://dokelung-blog.logdown.com/posts/234437-django-notes-10-users-login-and-logout

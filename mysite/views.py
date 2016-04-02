@@ -41,21 +41,30 @@ def set_c(request):
     return response
 
         
-def login_page(request):
-    
-    #如果用戶已經登入，則HttpRequest.user是一個User物件，也就是具名用戶。
-    if request.user.is_authenticated(): 
-        return HttpResponseRedirect('/index/')
-        
-    #如果使用者尚未登入，HttpRequest.user是一個AnonymousUser物件，也就是匿名用戶。
-    username = request.POST['username']
-    password = request.POST['password']
+def login(request):
 
+    #如果用戶已經登入，則HttpRequest.user是一個User物件，也就是具名用戶。
+    #所以如果使用者已經認證過，我們將他重導回首頁
+    if request.user.is_authenticated(): 
+        return HttpResponseRedirect('/')
+
+    #如果使用者尚未登入，HttpRequest.user是一個AnonymousUser物件，也就是匿名用戶。
+    username = request.POST.get('username', '')
+    password = request.POST.get('password', '')
+
+    #使用auth中的authenticate方法來確認用戶
     user = auth.authenticate(username=username, password=password)
     
+                            #帳戶沒有被凍結
     if user is not None and user.is_active:
-        auth.login(request, user)
-        return HttpResponseRedirect('/index/')
+        auth.login(request, user) #真正登入使用者並保持他的登入狀態
+        return HttpResponseRedirect('/')
     else:
         return render_to_response('login.html')
-        
+
+def index(request):
+    return render_to_response('index.html',locals())
+
+def logout(request):
+    auth.logout(request)
+    return HttpResponseRedirect('/')

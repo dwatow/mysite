@@ -17,8 +17,10 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+admin.autodiscover()
+
 from restaurants.views import menu, list_restaurants, comment
-from mysite.views import welcome, use_session, session_test, set_c, get_c, login_page
+from mysite.views import welcome, use_session, session_test, set_c, get_c, login, logout, index
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -31,7 +33,10 @@ urlpatterns = [
     url(r'^session_test/$', session_test),
     url(r'^get_c/$', get_c),
     url(r'^set_c/$', set_c),
-    url(r'^login/$', login_page),
+    url(r'^accounts/login/$',login),
+    url(r'^accounts/logout/$',logout),
+    url(r'^$',index),
+    url(r'index/^$',index),
 ]
 
 
