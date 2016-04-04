@@ -5,6 +5,7 @@ from django.template.loader import get_template
 from django.shortcuts import render_to_response
 from django.contrib.sessions.models import Session
 from django.contrib import auth
+from django.contrib.auth.forms import UserCreationForm
 
 def welcome(request):
     if 'user_name' in request.GET:
@@ -42,7 +43,8 @@ def set_c(request):
 
         
 def login(request):
-
+    return HttpResponse('234')
+    
     #如果用戶已經登入，則HttpRequest.user是一個User物件，也就是具名用戶。
     #所以如果使用者已經認證過，我們將他重導回首頁
     if request.user.is_authenticated(): 
@@ -68,3 +70,13 @@ def index(request):
 def logout(request):
     auth.logout(request)
     return HttpResponseRedirect('/')
+    
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            return HttpResponseRedirect('/accounts/login/')
+    else:
+        form = UserCreationForm()
+    return render_to_response('register.html',locals())

@@ -7,7 +7,7 @@
     <body>
         <h2>{{ r.name }}的Menu</h2>
         {% if r.food_set.all %}
-            <p>本餐廳共有{{ r.food_set.all|length }}道菜</p>
+            <p>店家有{{ r.food_set.all|length }}道菜</p>
             <table>
                 <tr>
                     <th>菜名</th>
@@ -25,7 +25,7 @@
             {% endfor %}
             </table>
         {% else %}
-            <p>本餐廳啥都沒賣</p>
+            <p>直接來店裡坐吧~</p>
         {% endif %}
     </body>
 </html>

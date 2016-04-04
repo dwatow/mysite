@@ -19,10 +19,19 @@ class Food(models.Model):
 
     def __unicode__(self):
         return self.name
-        
+
 class Comment(models.Model):
     content = models.CharField(max_length=200)
     user = models.CharField(max_length=20)
     email = models.EmailField(max_length=20)
     date_time = models.DateTimeField()
     restaurant = models.ForeignKey(Restaurant)
+
+    def __unicode__(self):
+        return self.user + ':' + self.content
+
+    class Meta:
+        ordering = ['date_time']
+        permissions = (
+            ("can_comment", "Can comment", ),
+        )

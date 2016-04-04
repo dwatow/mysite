@@ -5,7 +5,7 @@
         <meta charset='utf-8'>
     </head>
     <body>
-        <h2>餐廳列表</h2>
+        <h2>目前的美食有...</h2>
         <form action="/menu/" method="get">
         <table>
             <tr>
@@ -13,19 +13,24 @@
                 <th>店名</th>
                 <th>電話</th>
                 <th>地址</th>
-                <th>評價</th>
+                {% if perms.restaurants.can_comment %}
+                    <th>評價</th>
+                {% endif %}
             </tr>
             {% for r in restaurants %}
                 <tr>
-                    <td> <input type="radio" name="id" value="{{r.id}}"> </td>
+                    <!-- <td> <input type="radio" name="id" value="{{r.id}}"> </td> -->
+                    <td> <a href="/menu/{{r.id}}/"> menu </a> </td>
                     <td> {{ r.name }} </td>
                     <td> {{ r.phone_number }} </td>
                     <td> {{ r.address }} </td>
-                    <td> <a href="/comment/{{r.id}}/"> comment </a> </td>
+                    {% if perms.restaurants.can_comment %}
+                        <td> <a href="/comment/{{r.id}}/"> comment </a> </td>
+                    {% endif %}
                 </tr>
             {% endfor %}
         </table>
-        <input type="submit" value="觀看menu">
+        <button type="submit">觀看menu</button>
         </form>
     </body>
 </html>

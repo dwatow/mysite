@@ -56,3 +56,6 @@ http://dokelung-blog.logdown.com/posts/222552-django-notes-9-cookies-and-session
 
 使用內建的login/logout視圖
 http://dokelung-blog.logdown.com/posts/234437-django-notes-10-users-login-and-logout
+
+使用權限s
+http://dokelung-blog.logdown.com/posts/234896-django-notes-11-permission-and-registration

@@ -20,7 +20,8 @@ from django.contrib import admin
 admin.autodiscover()
 
 from restaurants.views import menu, list_restaurants, comment
-from mysite.views import welcome, use_session, session_test, set_c, get_c, login, logout, index
+from mysite.views import welcome, use_session, session_test, set_c, get_c, index, register
+from django.contrib.auth.views import login, logout
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -33,10 +34,12 @@ urlpatterns = [
     url(r'^session_test/$', session_test),
     url(r'^get_c/$', get_c),
     url(r'^set_c/$', set_c),
-    url(r'^accounts/login/$',login),
+    #url(r'^accounts/login/$',login),
+    url(r'^accounts/login/$',login,{'template_name':'login.html'}),
     url(r'^accounts/logout/$',logout),
     url(r'^$',index),
     url(r'index/^$',index),
+    url(r'^accounts/register/$',register),
 ]
 
 

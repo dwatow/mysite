@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from restaurants.models import Restaurant, Food
+from restaurants.models import Restaurant, Food, Comment
 
 
 class RestaurantAdmin(admin.ModelAdmin):
@@ -14,5 +14,9 @@ class FoodAdmin(admin.ModelAdmin):
     list_filter = ('is_spicy',)
     fields = ('price','restaurant')
     
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('content', 'user', 'email', 'date_time', 'restaurant')
+    
 admin.site.register(Restaurant, RestaurantAdmin)
 admin.site.register(Food, FoodAdmin)
+admin.site.register(Comment, CommentAdmin)
