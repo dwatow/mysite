@@ -19,27 +19,26 @@ from django.contrib import admin
 
 admin.autodiscover()
 
-from restaurants.views import menu, list_restaurants, comment
+from restaurants.views import menu, list_restaurants, comment, menu_id
 from mysite.views import welcome, use_session, session_test, set_c, get_c, index, register
 from django.contrib.auth.views import login, logout
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^welcome/$', welcome),
-    url(r'^menu/$', menu),
-    url(r'^menu/(\d{1,5})/$', menu),
-    url(r'^restaurants_list/$', list_restaurants),
-    url(r'^comment/(\d{1,5})/$', comment),
-    url(r'^use_session/$', use_session),
-    url(r'^session_test/$', session_test),
     url(r'^get_c/$', get_c),
     url(r'^set_c/$', set_c),
-    #url(r'^accounts/login/$',login),
-    url(r'^accounts/login/$',login,{'template_name':'login.html'}),
-    url(r'^accounts/logout/$',logout),
+    url(r'^welcome/$', welcome),
+    url(r'^use_session/$', use_session),
+    url(r'^session_test/$', session_test),
+    url(r'^admin/', admin.site.urls),
+    url(r'^accounts/register/$',register),
     url(r'^$',index),
     url(r'index/^$',index),
-    url(r'^accounts/register/$',register),
+    url(r'^menu/$', menu),
+    url(r'^menu/(\d{1,5})/$', menu_id),
+    url(r'^restaurants_list/$', list_restaurants),
+    url(r'^comment/(\d{1,5})/$', comment),
+    url(r'^accounts/login/$',login,{'template_name':'login.html'}),
+    url(r'^accounts/logout/$',logout,{'template_name':'index.html'}),
 ]
 
 

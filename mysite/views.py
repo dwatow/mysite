@@ -41,10 +41,9 @@ def set_c(request):
     response.set_cookie('lucky_number',8)
     return response
 
-        
+'''
 def login(request):
-    return HttpResponse('234')
-    
+
     #如果用戶已經登入，則HttpRequest.user是一個User物件，也就是具名用戶。
     #所以如果使用者已經認證過，我們將他重導回首頁
     if request.user.is_authenticated(): 
@@ -63,14 +62,14 @@ def login(request):
         return HttpResponseRedirect('/')
     else:
         return render_to_response('login.html')
-
+'''
 def index(request):
     return render_to_response('index.html',locals())
-
+'''
 def logout(request):
     auth.logout(request)
     return HttpResponseRedirect('/')
-    
+    '''
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)

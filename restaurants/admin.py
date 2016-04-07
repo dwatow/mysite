@@ -2,6 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 from restaurants.models import Restaurant, Food, Comment
+from django.contrib.auth.models import Permission
 
 
 class RestaurantAdmin(admin.ModelAdmin):
@@ -16,7 +17,7 @@ class FoodAdmin(admin.ModelAdmin):
     
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('content', 'user', 'email', 'date_time', 'restaurant')
-    
+
 admin.site.register(Restaurant, RestaurantAdmin)
 admin.site.register(Food, FoodAdmin)
 admin.site.register(Comment, CommentAdmin)
